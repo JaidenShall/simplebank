@@ -2,6 +2,7 @@ package api
 
 import (
 	"database/sql"
+	"fmt"
 	"net/http"
 	db "simplebank/db/sqlc"
 
@@ -82,6 +83,6 @@ func (server *Server) listAccount(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
 	}
-
+	fmt.Println("Results:", accounts)
 	ctx.JSON(http.StatusOK, accounts)
 }
