@@ -7,8 +7,16 @@ createdb:
 migrateup:
 	migrate -path db/migration -database "postgres://root:qwe123@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
+
+migrateup1:
+	migrate -path db/migration -database "postgres://root:qwe123@localhost:5432/simple_bank?sslmode=disable" -verbose up 1
+
 migratedown:
 	migrate -path db/migration -database "postgres://root:qwe123@localhost:5432/simple_bank?sslmode=disable" -verbose down
+
+migratedown1:
+	migrate -path db/migration -database "postgres://root:qwe123@localhost:5432/simple_bank?sslmode=disable" -verbose down 1
+	
 
 dropdb:
 	docker exec -it mypostgres dropdb --username=root --owner=root simple_bank 
