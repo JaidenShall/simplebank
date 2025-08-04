@@ -18,5 +18,4 @@ services:
       - DB_SOURCE=postgresql://root:qwe123@postgres:5432/simple_bank?sslmode=disable
     depends_on:
       - postgres
-    links:
-      - postgres
+    

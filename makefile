@@ -1,26 +1,35 @@
+DB_URL=postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable
+
+network:
+	docker network create bank-network
+
 postgres:
-	docker run --name mypostgres --network bank-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=qwe123 -d postgres:latest
+	docker run --name postgres --network bank-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=qwe123 -d postgres:latest
 
 createdb:
-	docker exec -it mypostgres createdb --username=root --owner=root simple_bank
-
-migrateup:
-	migrate -path db/migration -database "postgres://root:qwe123@localhost:5432/simple_bank?sslmode=disable" -verbose up
-
-
-migrateup1:
-	migrate -path db/migration -database "postgres://root:qwe123@localhost:5432/simple_bank?sslmode=disable" -verbose up 1
-
-migratedown:
-	migrate -path db/migration -database "postgres://root:qwe123@localhost:5432/simple_bank?sslmode=disable" -verbose down
-
-migratedown1:
-	migrate -path db/migration -database "postgres://root:qwe123@localhost:5432/simple_bank?sslmode=disable" -verbose down 1
-	
+	docker exec -it postgres createdb --username=root --owner=root simple_bank
 
 dropdb:
-	docker exec -it mypostgres dropdb --username=root --owner=root simple_bank 
+	docker exec -it postgres dropdb simple_bank
 
+migrateup:
+	migrate -path db/migration -database "$(DB_URL)" -verbose up
+
+migrateup1:
+	migrate -path db/migration -database "$(DB_URL)" -verbose up 1
+
+migratedown:
+	migrate -path db/migration -database "$(DB_URL)" -verbose down
+
+migratedown1:
+	migrate -path db/migration -database "$(DB_URL)" -verbose down 1
+
+db_docs:
+	dbdocs build doc/db.dbml
+
+db_schema:
+	dbml2sql --postgres -o doc/schema.sql doc/db.dbml
+	
 sqlc:
 	sqlc generate
 
@@ -33,4 +42,4 @@ server:
 mock:
 	mockgen -package mockdb -destination db/mock/store.go github.com/JaidenShall/simplebank/db/sqlc Store
 
-.PHONY: createdb dropdb postgres migrateup migratedown sqlc test server mock
+.PHONY: createdb dropdb postgres migrateup migratedown sqlc test server mock network db_docs db_schema
