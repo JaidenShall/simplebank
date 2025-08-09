@@ -10,7 +10,10 @@ require (
 	github.com/lib/pq v1.10.9
 	github.com/spf13/viper v1.20.1
 	github.com/stretchr/testify v1.10.0
+	google.golang.org/grpc v1.67.3
 )
+
+require google.golang.org/genproto/googleapis/rpc v0.0.0-20241223144023-3abc09e42ca8 // indirect
 
 require (
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
@@ -43,7 +46,7 @@ require (
 	golang.org/x/net v0.41.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
 	golang.org/x/text v0.26.0 // indirect
-	google.golang.org/protobuf v1.36.6 // indirect
+	google.golang.org/protobuf v1.36.6
 )
 
 require (
