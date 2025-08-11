@@ -10,6 +10,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.1
 	github.com/lib/pq v1.10.9
 	github.com/rakyll/statik v0.1.7
+	github.com/rs/zerolog v1.34.0
 	github.com/spf13/viper v1.20.1
 	github.com/stretchr/testify v1.10.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20250603155806-513f23925822
@@ -21,6 +22,7 @@ require (
 require (
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
 )
 
 require (
