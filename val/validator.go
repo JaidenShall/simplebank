@@ -82,3 +82,10 @@ func ValidateAccountID(value int64) error {
 	}
 	return nil
 }
+
+func ValidateAmount(value int64) error {
+	if value <= 0 {
+		return fmt.Errorf("must be positive")
+	}
+	return nil
+}
