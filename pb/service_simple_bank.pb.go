@@ -26,7 +26,7 @@ var File_service_simple_bank_proto protoreflect.FileDescriptor
 
 const file_service_simple_bank_proto_rawDesc = "" +
 	"\n" +
-	"\x19service_simple_bank.proto\x12\x02pb\x1a\x1cgoogle/api/annotations.proto\x1a\x15rpc_create_user.proto\x1a\x14rpc_login_user.proto\x1a\x15rpc_update_user.proto\x1a\x16rpc_verify_email.proto\x1a.protoc-gen-openapiv2/options/annotations.proto2\xe3\x04\n" +
+	"\x19service_simple_bank.proto\x12\x02pb\x1a\x1cgoogle/api/annotations.proto\x1a\x15rpc_create_user.proto\x1a\x14rpc_login_user.proto\x1a\x15rpc_update_user.proto\x1a\x16rpc_verify_email.proto\x1a\x18rpc_create_account.proto\x1a\x15rpc_get_account.proto\x1a\x17rpc_list_accounts.proto\x1a.protoc-gen-openapiv2/options/annotations.proto2\x93\b\n" +
 	"\n" +
 	"SimpleBank\x12\x8e\x01\n" +
 	"\n" +
@@ -35,34 +35,50 @@ const file_service_simple_bank_proto_rawDesc = "" +
 	"Login user\x1a?Use this API to login user and get access token & refresh token\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/v1/login_user\x12\x84\x01\n" +
 	"\n" +
 	"UpdateUser\x12\x15.pb.UpdateUserRequest\x1a\x16.pb.UpdateUserResponse\"G\x92A*\x12\vUpdate user\x1a\x1bUse this API to update user\x82\xd3\xe4\x93\x02\x14:\x01*2\x0f/v1/update_user\x12\x96\x01\n" +
-	"\vVerifyEmail\x12\x16.pb.VerifyEmailRequest\x1a\x17.pb.VerifyEmailResponse\"V\x92A;\x12\fVerify email\x1a+Use this API to verify user's email address\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/verify_emailB\x8c\x01\x92Ac\x12a\n" +
+	"\vVerifyEmail\x12\x16.pb.VerifyEmailRequest\x1a\x17.pb.VerifyEmailResponse\"V\x92A;\x12\fVerify email\x1a+Use this API to verify user's email address\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/verify_email\x12\x96\x01\n" +
+	"\rCreateAccount\x12\x18.pb.CreateAccountRequest\x1a\x19.pb.CreateAccountResponse\"P\x92A6\x12\x0eCreate account\x1a$Use this API to create a new account\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/v1/accounts\x12\x89\x01\n" +
+	"\n" +
+	"GetAccount\x12\x15.pb.GetAccountRequest\x1a\x16.pb.GetAccountResponse\"L\x92A0\x12\vGet account\x1a!Use this API to get account by ID\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/accounts/{id}\x12\x88\x01\n" +
+	"\fListAccounts\x12\x17.pb.ListAccountsRequest\x1a\x18.pb.ListAccountsResponse\"E\x92A.\x12\rList accounts\x1a\x1dUse this API to list accounts\x82\xd3\xe4\x93\x02\x0e\x12\f/v1/accountsB\x8c\x01\x92Ac\x12a\n" +
 	"\x0fSimple Bank API\"I\n" +
 	"\fJaiden Shall\x12\x1ehttps://github.com/JaidenShall\x1a\x19shalljaiden0110@gmail.com2\x031.2Z$github.com/JaidenShall/simplebank/pbb\x06proto3"
 
 var file_service_simple_bank_proto_goTypes = []any{
-	(*CreateUserRequest)(nil),   // 0: pb.CreateUserRequest
-	(*LoginUserRequest)(nil),    // 1: pb.LoginUserRequest
-	(*UpdateUserRequest)(nil),   // 2: pb.UpdateUserRequest
-	(*VerifyEmailRequest)(nil),  // 3: pb.VerifyEmailRequest
-	(*CreateUserResponse)(nil),  // 4: pb.CreateUserResponse
-	(*LoginUserResponse)(nil),   // 5: pb.LoginUserResponse
-	(*UpdateUserResponse)(nil),  // 6: pb.UpdateUserResponse
-	(*VerifyEmailResponse)(nil), // 7: pb.VerifyEmailResponse
+	(*CreateUserRequest)(nil),     // 0: pb.CreateUserRequest
+	(*LoginUserRequest)(nil),      // 1: pb.LoginUserRequest
+	(*UpdateUserRequest)(nil),     // 2: pb.UpdateUserRequest
+	(*VerifyEmailRequest)(nil),    // 3: pb.VerifyEmailRequest
+	(*CreateAccountRequest)(nil),  // 4: pb.CreateAccountRequest
+	(*GetAccountRequest)(nil),     // 5: pb.GetAccountRequest
+	(*ListAccountsRequest)(nil),   // 6: pb.ListAccountsRequest
+	(*CreateUserResponse)(nil),    // 7: pb.CreateUserResponse
+	(*LoginUserResponse)(nil),     // 8: pb.LoginUserResponse
+	(*UpdateUserResponse)(nil),    // 9: pb.UpdateUserResponse
+	(*VerifyEmailResponse)(nil),   // 10: pb.VerifyEmailResponse
+	(*CreateAccountResponse)(nil), // 11: pb.CreateAccountResponse
+	(*GetAccountResponse)(nil),    // 12: pb.GetAccountResponse
+	(*ListAccountsResponse)(nil),  // 13: pb.ListAccountsResponse
 }
 var file_service_simple_bank_proto_depIdxs = []int32{
-	0, // 0: pb.SimpleBank.CreateUser:input_type -> pb.CreateUserRequest
-	1, // 1: pb.SimpleBank.LoginUser:input_type -> pb.LoginUserRequest
-	2, // 2: pb.SimpleBank.UpdateUser:input_type -> pb.UpdateUserRequest
-	3, // 3: pb.SimpleBank.VerifyEmail:input_type -> pb.VerifyEmailRequest
-	4, // 4: pb.SimpleBank.CreateUser:output_type -> pb.CreateUserResponse
-	5, // 5: pb.SimpleBank.LoginUser:output_type -> pb.LoginUserResponse
-	6, // 6: pb.SimpleBank.UpdateUser:output_type -> pb.UpdateUserResponse
-	7, // 7: pb.SimpleBank.VerifyEmail:output_type -> pb.VerifyEmailResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: pb.SimpleBank.CreateUser:input_type -> pb.CreateUserRequest
+	1,  // 1: pb.SimpleBank.LoginUser:input_type -> pb.LoginUserRequest
+	2,  // 2: pb.SimpleBank.UpdateUser:input_type -> pb.UpdateUserRequest
+	3,  // 3: pb.SimpleBank.VerifyEmail:input_type -> pb.VerifyEmailRequest
+	4,  // 4: pb.SimpleBank.CreateAccount:input_type -> pb.CreateAccountRequest
+	5,  // 5: pb.SimpleBank.GetAccount:input_type -> pb.GetAccountRequest
+	6,  // 6: pb.SimpleBank.ListAccounts:input_type -> pb.ListAccountsRequest
+	7,  // 7: pb.SimpleBank.CreateUser:output_type -> pb.CreateUserResponse
+	8,  // 8: pb.SimpleBank.LoginUser:output_type -> pb.LoginUserResponse
+	9,  // 9: pb.SimpleBank.UpdateUser:output_type -> pb.UpdateUserResponse
+	10, // 10: pb.SimpleBank.VerifyEmail:output_type -> pb.VerifyEmailResponse
+	11, // 11: pb.SimpleBank.CreateAccount:output_type -> pb.CreateAccountResponse
+	12, // 12: pb.SimpleBank.GetAccount:output_type -> pb.GetAccountResponse
+	13, // 13: pb.SimpleBank.ListAccounts:output_type -> pb.ListAccountsResponse
+	7,  // [7:14] is the sub-list for method output_type
+	0,  // [0:7] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_service_simple_bank_proto_init() }
@@ -74,6 +90,9 @@ func file_service_simple_bank_proto_init() {
 	file_rpc_login_user_proto_init()
 	file_rpc_update_user_proto_init()
 	file_rpc_verify_email_proto_init()
+	file_rpc_create_account_proto_init()
+	file_rpc_get_account_proto_init()
+	file_rpc_list_accounts_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
