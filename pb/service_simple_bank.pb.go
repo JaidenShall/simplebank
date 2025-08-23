@@ -26,8 +26,7 @@ var File_service_simple_bank_proto protoreflect.FileDescriptor
 
 const file_service_simple_bank_proto_rawDesc = "" +
 	"\n" +
-	"\x19service_simple_bank.proto\x12\x02pb\x1a\x1cgoogle/api/annotations.proto\x1a\x15rpc_create_user.proto\x1a\x14rpc_login_user.proto\x1a\x15rpc_update_user.proto\x1a\x16rpc_verify_email.proto\x1a\x18rpc_create_account.proto\x1a\x15rpc_get_account.proto\x1a\x17rpc_list_accounts.proto\x1a\x11rpc_deposit.proto\x1a\x12rpc_withdraw.proto\x1a.protoc-gen-openapiv2/options/annotations.proto2\xdf\n" +
-	"\n" +
+	"\x19service_simple_bank.proto\x12\x02pb\x1a\x1cgoogle/api/annotations.proto\x1a\x15rpc_create_user.proto\x1a\x14rpc_login_user.proto\x1a\x15rpc_update_user.proto\x1a\x16rpc_verify_email.proto\x1a\x18rpc_create_account.proto\x1a\x15rpc_get_account.proto\x1a\x17rpc_list_accounts.proto\x1a\x11rpc_deposit.proto\x1a\x12rpc_withdraw.proto\x1a\x18rpc_transfer_money.proto\x1a.protoc-gen-openapiv2/options/annotations.proto2\x84\f\n" +
 	"\n" +
 	"SimpleBank\x12\x8e\x01\n" +
 	"\n" +
@@ -42,7 +41,8 @@ const file_service_simple_bank_proto_rawDesc = "" +
 	"GetAccount\x12\x15.pb.GetAccountRequest\x1a\x16.pb.GetAccountResponse\"L\x92A0\x12\vGet account\x1a!Use this API to get account by ID\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/accounts/{id}\x12\x88\x01\n" +
 	"\fListAccounts\x12\x17.pb.ListAccountsRequest\x1a\x18.pb.ListAccountsResponse\"E\x92A.\x12\rList accounts\x1a\x1dUse this API to list accounts\x82\xd3\xe4\x93\x02\x0e\x12\f/v1/accounts\x12\x9f\x01\n" +
 	"\aDeposit\x12\x12.pb.DepositRequest\x1a\x13.pb.DepositResponse\"k\x92A<\x12\rDeposit money\x1a+Use this API to deposit money to an account\x82\xd3\xe4\x93\x02&:\x01*\"!/v1/accounts/{account_id}/deposit\x12\xa7\x01\n" +
-	"\bWithdraw\x12\x13.pb.WithdrawRequest\x1a\x14.pb.WithdrawResponse\"p\x92A@\x12\x0eWithdraw money\x1a.Use this API to withdraw money from an account\x82\xd3\xe4\x93\x02':\x01*\"\"/v1/accounts/{account_id}/withdrawB\x8c\x01\x92Ac\x12a\n" +
+	"\bWithdraw\x12\x13.pb.WithdrawRequest\x1a\x14.pb.WithdrawResponse\"p\x92A@\x12\x0eWithdraw money\x1a.Use this API to withdraw money from an account\x82\xd3\xe4\x93\x02':\x01*\"\"/v1/accounts/{account_id}/withdraw\x12\xa2\x01\n" +
+	"\rTransferMoney\x12\x18.pb.TransferMoneyRequest\x1a\x19.pb.TransferMoneyResponse\"\\\x92AA\x12\x0eTransfer money\x1a/Use this API to transfer money between accounts\x82\xd3\xe4\x93\x02\x12:\x01*\"\r/v1/transfersB\x8c\x01\x92Ac\x12a\n" +
 	"\x0fSimple Bank API\"I\n" +
 	"\fJaiden Shall\x12\x1ehttps://github.com/JaidenShall\x1a\x19shalljaiden0110@gmail.com2\x031.2Z$github.com/JaidenShall/simplebank/pbb\x06proto3"
 
@@ -56,15 +56,17 @@ var file_service_simple_bank_proto_goTypes = []any{
 	(*ListAccountsRequest)(nil),   // 6: pb.ListAccountsRequest
 	(*DepositRequest)(nil),        // 7: pb.DepositRequest
 	(*WithdrawRequest)(nil),       // 8: pb.WithdrawRequest
-	(*CreateUserResponse)(nil),    // 9: pb.CreateUserResponse
-	(*LoginUserResponse)(nil),     // 10: pb.LoginUserResponse
-	(*UpdateUserResponse)(nil),    // 11: pb.UpdateUserResponse
-	(*VerifyEmailResponse)(nil),   // 12: pb.VerifyEmailResponse
-	(*CreateAccountResponse)(nil), // 13: pb.CreateAccountResponse
-	(*GetAccountResponse)(nil),    // 14: pb.GetAccountResponse
-	(*ListAccountsResponse)(nil),  // 15: pb.ListAccountsResponse
-	(*DepositResponse)(nil),       // 16: pb.DepositResponse
-	(*WithdrawResponse)(nil),      // 17: pb.WithdrawResponse
+	(*TransferMoneyRequest)(nil),  // 9: pb.TransferMoneyRequest
+	(*CreateUserResponse)(nil),    // 10: pb.CreateUserResponse
+	(*LoginUserResponse)(nil),     // 11: pb.LoginUserResponse
+	(*UpdateUserResponse)(nil),    // 12: pb.UpdateUserResponse
+	(*VerifyEmailResponse)(nil),   // 13: pb.VerifyEmailResponse
+	(*CreateAccountResponse)(nil), // 14: pb.CreateAccountResponse
+	(*GetAccountResponse)(nil),    // 15: pb.GetAccountResponse
+	(*ListAccountsResponse)(nil),  // 16: pb.ListAccountsResponse
+	(*DepositResponse)(nil),       // 17: pb.DepositResponse
+	(*WithdrawResponse)(nil),      // 18: pb.WithdrawResponse
+	(*TransferMoneyResponse)(nil), // 19: pb.TransferMoneyResponse
 }
 var file_service_simple_bank_proto_depIdxs = []int32{
 	0,  // 0: pb.SimpleBank.CreateUser:input_type -> pb.CreateUserRequest
@@ -76,17 +78,19 @@ var file_service_simple_bank_proto_depIdxs = []int32{
 	6,  // 6: pb.SimpleBank.ListAccounts:input_type -> pb.ListAccountsRequest
 	7,  // 7: pb.SimpleBank.Deposit:input_type -> pb.DepositRequest
 	8,  // 8: pb.SimpleBank.Withdraw:input_type -> pb.WithdrawRequest
-	9,  // 9: pb.SimpleBank.CreateUser:output_type -> pb.CreateUserResponse
-	10, // 10: pb.SimpleBank.LoginUser:output_type -> pb.LoginUserResponse
-	11, // 11: pb.SimpleBank.UpdateUser:output_type -> pb.UpdateUserResponse
-	12, // 12: pb.SimpleBank.VerifyEmail:output_type -> pb.VerifyEmailResponse
-	13, // 13: pb.SimpleBank.CreateAccount:output_type -> pb.CreateAccountResponse
-	14, // 14: pb.SimpleBank.GetAccount:output_type -> pb.GetAccountResponse
-	15, // 15: pb.SimpleBank.ListAccounts:output_type -> pb.ListAccountsResponse
-	16, // 16: pb.SimpleBank.Deposit:output_type -> pb.DepositResponse
-	17, // 17: pb.SimpleBank.Withdraw:output_type -> pb.WithdrawResponse
-	9,  // [9:18] is the sub-list for method output_type
-	0,  // [0:9] is the sub-list for method input_type
+	9,  // 9: pb.SimpleBank.TransferMoney:input_type -> pb.TransferMoneyRequest
+	10, // 10: pb.SimpleBank.CreateUser:output_type -> pb.CreateUserResponse
+	11, // 11: pb.SimpleBank.LoginUser:output_type -> pb.LoginUserResponse
+	12, // 12: pb.SimpleBank.UpdateUser:output_type -> pb.UpdateUserResponse
+	13, // 13: pb.SimpleBank.VerifyEmail:output_type -> pb.VerifyEmailResponse
+	14, // 14: pb.SimpleBank.CreateAccount:output_type -> pb.CreateAccountResponse
+	15, // 15: pb.SimpleBank.GetAccount:output_type -> pb.GetAccountResponse
+	16, // 16: pb.SimpleBank.ListAccounts:output_type -> pb.ListAccountsResponse
+	17, // 17: pb.SimpleBank.Deposit:output_type -> pb.DepositResponse
+	18, // 18: pb.SimpleBank.Withdraw:output_type -> pb.WithdrawResponse
+	19, // 19: pb.SimpleBank.TransferMoney:output_type -> pb.TransferMoneyResponse
+	10, // [10:20] is the sub-list for method output_type
+	0,  // [0:10] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -106,6 +110,7 @@ func file_service_simple_bank_proto_init() {
 	file_rpc_list_accounts_proto_init()
 	file_rpc_deposit_proto_init()
 	file_rpc_withdraw_proto_init()
+	file_rpc_transfer_money_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

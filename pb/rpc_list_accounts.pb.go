@@ -23,8 +23,6 @@ const (
 
 type ListAccountsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PageId        int32                  `protobuf:"varint,1,opt,name=page_id,json=pageId,proto3" json:"page_id,omitempty"`
-	PageSize      int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -57,20 +55,6 @@ func (x *ListAccountsRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ListAccountsRequest.ProtoReflect.Descriptor instead.
 func (*ListAccountsRequest) Descriptor() ([]byte, []int) {
 	return file_rpc_list_accounts_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *ListAccountsRequest) GetPageId() int32 {
-	if x != nil {
-		return x.PageId
-	}
-	return 0
-}
-
-func (x *ListAccountsRequest) GetPageSize() int32 {
-	if x != nil {
-		return x.PageSize
-	}
-	return 0
 }
 
 type ListAccountsResponse struct {
@@ -121,10 +105,8 @@ var File_rpc_list_accounts_proto protoreflect.FileDescriptor
 
 const file_rpc_list_accounts_proto_rawDesc = "" +
 	"\n" +
-	"\x17rpc_list_accounts.proto\x12\x02pb\x1a\raccount.proto\"K\n" +
-	"\x13ListAccountsRequest\x12\x17\n" +
-	"\apage_id\x18\x01 \x01(\x05R\x06pageId\x12\x1b\n" +
-	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\"?\n" +
+	"\x17rpc_list_accounts.proto\x12\x02pb\x1a\raccount.proto\"\x15\n" +
+	"\x13ListAccountsRequest\"?\n" +
 	"\x14ListAccountsResponse\x12'\n" +
 	"\baccounts\x18\x01 \x03(\v2\v.pb.AccountR\baccountsB&Z$github.com/JaidenShall/simplebank/pbb\x06proto3"
 

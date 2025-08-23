@@ -12,6 +12,7 @@ import "rpc_get_account.proto";
 import "rpc_list_accounts.proto";
 import "rpc_deposit.proto";
 import "rpc_withdraw.proto";
+import "rpc_transfer_money.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "github.com/JaidenShall/simplebank/pb";
@@ -123,7 +124,18 @@ service SimpleBank {
             description: "Use this API to withdraw money from an account";
             summary: "Withdraw money";
         };
-    }    
+    } 
+    
+    rpc TransferMoney (TransferMoneyRequest) returns (TransferMoneyResponse) {
+        option (google.api.http) = {
+            post: "/v1/transfers"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            description: "Use this API to transfer money between accounts";
+            summary: "Transfer money";
+        };
+    }
 
 
 }
