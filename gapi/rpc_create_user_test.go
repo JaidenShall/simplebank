@@ -191,8 +191,11 @@ func TestCreateUserAPI(t *testing.T) {
 				store.EXPECT().
 					CreateUserTx(gomock.Any(), gomock.Any()).
 					Times(1).
-					Return(db.CreateUserTxResult{}, &pq.Error{Code: "23505"})
-				// No expectation for task distributor since CreateUserTx fails before callback
+					// Add the specific constraint name to the mocked error
+					Return(db.CreateUserTxResult{}, &pq.Error{
+						Code:       "23505", // "unique_violation"
+						Constraint: "users_pkey",
+					})
 			},
 			checkResponse: func(t *testing.T, res *pb.CreateUserResponse, err error) {
 				require.Error(t, err)
