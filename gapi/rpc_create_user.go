@@ -53,7 +53,12 @@ func (server *Server) CreateUser(ctx context.Context, req *pb.CreateUserRequest)
 		if pqErr, ok := err.(*pq.Error); ok {
 			switch pqErr.Code.Name() {
 			case "unique_violation":
-				return nil, status.Errorf(codes.AlreadyExists, "username already exists: %s", err)
+				switch pqErr.Constraint {
+				case "users_pkey": // Assuming your primary key constraint is named users_pkey for the username
+					return nil, status.Errorf(codes.AlreadyExists, "Username already exists: %s", req.GetUsername())
+				case "users_email_key": // This is the constraint name for the unique email
+					return nil, status.Errorf(codes.AlreadyExists, "Email already exists: %s", req.GetEmail())
+				}
 			}
 		}
 		return nil, status.Errorf(codes.Internal, "failed to create user: %s", err)
